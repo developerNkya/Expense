@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "Expense",
+     "slug": "expense",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/logo_expense.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/images/logo_expense.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#18171C"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.yourcompany.expense"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/logo_expense.png",
+        "backgroundColor": "#B2DB5E"
+      },
+      "edgeToEdgeEnabled": true,
+      "package": "com.yourcompany.expense"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "0c5fec58-7e3d-4f97-8724-7fb95d07c99f"
+      }
+    },
+    "plugins": [
+      "expo-font"
+    ]
+  }
+}
