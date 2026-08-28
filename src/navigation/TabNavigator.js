@@ -1,6 +1,7 @@
 import React from "react";
-import { Image, View, Text, StyleSheet } from "react-native";
+import { Image, View, Text, StyleSheet, Platform } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import {
   HomeScreen,
@@ -10,22 +11,19 @@ import {
   SpendingsScreen,
 } from "../components/screens";
 
-// Tab icons from Figma
 const tabIcons = {
   Home: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/h4QB2pSp3c/8sz7gopj_expires_30_days.png",
-  Transfer:
-    "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/h4QB2pSp3c/2twme75q_expires_30_days.png",
-  PayBills:
-    "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/h4QB2pSp3c/9fzpgnka_expires_30_days.png",
-  Savings:
-    "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/h4QB2pSp3c/1dw7ythd_expires_30_days.png",
-  Spendings:
-    "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/h4QB2pSp3c/8prtzodp_expires_30_days.png",
+  Transfer: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/h4QB2pSp3c/2twme75q_expires_30_days.png",
+  PayBills: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/h4QB2pSp3c/9fzpgnka_expires_30_days.png",
+  Savings: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/h4QB2pSp3c/1dw7ythd_expires_30_days.png",
+  Spendings: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/h4QB2pSp3c/8prtzodp_expires_30_days.png",
 };
 
 const Tab = createBottomTabNavigator();
 
 export const TabNavigator = () => {
+  const insets = useSafeAreaInsets();
+
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -34,8 +32,8 @@ export const TabNavigator = () => {
           backgroundColor: "#161519",
           borderTopWidth: 1,
           borderTopColor: "#2D2C31",
-          height: 70,
-          paddingBottom: 10,
+          height: 70 + (Platform.OS === 'android' ? insets.bottom : 0),
+          paddingBottom: 10 + (Platform.OS === 'android' ? insets.bottom : 0),
           paddingTop: 8,
         },
         tabBarIcon: ({ focused }) => {
