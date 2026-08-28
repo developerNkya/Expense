@@ -9,17 +9,13 @@ import { COLORS } from "../../../constants";
 import { Card } from "../../common/Card";
 import { TransactionItem } from "../../common/TransactionItem";
 
-// Data
 import { transactions } from "../../../data/homeData";
 
 export const HomeScreen = () => {
-  // User data
   const userData = {
     name: "Zaburi Frolian",
-    avatar:
-      "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/h4QB2pSp3c/all2nsu8_expires_30_days.png",
-    profileImage:
-      "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/h4QB2pSp3c/3h5pqh5z_expires_30_days.png",
+    avatar: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/h4QB2pSp3c/all2nsu8_expires_30_days.png",
+    profileImage: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/h4QB2pSp3c/3h5pqh5z_expires_30_days.png",
   };
 
   return (
@@ -30,10 +26,8 @@ export const HomeScreen = () => {
         style={styles.scrollView}
         showsVerticalScrollIndicator={false}
         stickyHeaderIndices={[0]}
+        contentContainerStyle={styles.scrollContent}
       >
-        {/* ============================================ */}
-        {/* STICKY HEADER */}
-        {/* ============================================ */}
         <View style={styles.stickyHeader}>
           <View style={styles.profileSection}>
             <View style={styles.userInfo}>
@@ -67,9 +61,6 @@ export const HomeScreen = () => {
           </View>
         </View>
 
-        {/* ============================================ */}
-        {/* BALANCE SECTION */}
-        {/* ============================================ */}
         <View style={styles.balanceSection}>
           <Text style={styles.balanceLabel}>Card Balance</Text>
           <View style={styles.balanceRow}>
@@ -83,9 +74,6 @@ export const HomeScreen = () => {
           </View>
         </View>
 
-        {/* ============================================ */}
-        {/* CARD DISPLAY */}
-        {/* ============================================ */}
         <View style={styles.cardContainer}>
           <LinearGradient
             start={{ x: 0, y: 0 }}
@@ -114,9 +102,6 @@ export const HomeScreen = () => {
           </ImageBackground>
         </View>
 
-        {/* ============================================ */}
-        {/* SPENDINGS SECTION */}
-        {/* ============================================ */}
         <Text style={styles.sectionTitle}>Spendings</Text>
 
         <Card style={styles.spendingCard}>
@@ -143,9 +128,6 @@ export const HomeScreen = () => {
           </View>
         </Card>
 
-        {/* ============================================ */}
-        {/* TRANSACTIONS SECTION */}
-        {/* ============================================ */}
         <Text style={styles.sectionTitle}>Transactions</Text>
 
         <View style={styles.transactionsContainer}>

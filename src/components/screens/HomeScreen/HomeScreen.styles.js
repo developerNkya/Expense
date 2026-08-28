@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
 import { COLORS, SPACING } from "../../../constants";
 
 export const styles = StyleSheet.create({
@@ -10,10 +10,10 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.background,
   },
+  scrollContent: {
+    paddingBottom: 100,
+  },
 
-  // ============================================
-  // STICKY HEADER
-  // ============================================
   stickyHeader: {
     backgroundColor: COLORS.background,
     paddingTop: 16,
@@ -72,7 +72,6 @@ export const styles = StyleSheet.create({
     borderRadius: 8,
   },
 
-  // Balance Section
   balanceSection: {
     marginHorizontal: 20,
     marginTop: 8,
@@ -98,7 +97,6 @@ export const styles = StyleSheet.create({
     height: 50,
   },
 
-  // Card Display
   cardContainer: {
     marginHorizontal: 20,
     marginBottom: 28,
@@ -142,7 +140,6 @@ export const styles = StyleSheet.create({
     fontSize: 14,
   },
 
-  // Section Titles
   sectionTitle: {
     color: COLORS.textPrimary,
     fontSize: 18,
@@ -150,7 +147,6 @@ export const styles = StyleSheet.create({
     marginLeft: 20,
   },
 
-  // Spendings Card
   spendingCard: {
     marginHorizontal: 18,
     marginBottom: 28,
@@ -175,7 +171,6 @@ export const styles = StyleSheet.create({
     marginLeft: 13,
   },
 
-  // Freeze Card - pushed to the right edge
   freezeCardWrapper: {
     marginLeft: "auto",
     alignItems: "center",
@@ -192,9 +187,7 @@ export const styles = StyleSheet.create({
     fontSize: 12,
   },
 
-  // Transactions
   transactionsContainer: {
     marginHorizontal: 20,
-    marginBottom: 100, // Extra bottom padding for tab bar
   },
 });
