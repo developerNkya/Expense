@@ -1,5 +1,5 @@
-import React from "react";
-import { View, Text, ScrollView, Image, ImageBackground } from "react-native";
+import React, { useEffect, useRef } from "react";
+import { View, Text, ScrollView, Image, ImageBackground, Animated } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
@@ -8,10 +8,27 @@ import { styles } from "./HomeScreen.styles";
 import { COLORS } from "../../../constants";
 import { Card } from "../../common/Card";
 import { TransactionItem } from "../../common/TransactionItem";
-
 import { transactions } from "../../../data/homeData";
 
 export const HomeScreen = () => {
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+  const slideAnim = useRef(new Animated.Value(30)).current;
+
+  useEffect(() => {
+    Animated.parallel([
+      Animated.timing(fadeAnim, {
+        toValue: 1,
+        duration: 600,
+        useNativeDriver: true,
+      }),
+      Animated.timing(slideAnim, {
+        toValue: 0,
+        duration: 600,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  }, []);
+
   const userData = {
     name: "Zaburi Frolian",
     avatar: "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/h4QB2pSp3c/all2nsu8_expires_30_days.png",
@@ -21,9 +38,14 @@ export const HomeScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style="light" />
-
-      <ScrollView
-        style={styles.scrollView}
+      <Animated.ScrollView
+        style={[
+          styles.scrollView,
+          {
+            opacity: fadeAnim,
+            transform: [{ translateY: slideAnim }],
+          },
+        ]}
         showsVerticalScrollIndicator={false}
         stickyHeaderIndices={[0]}
         contentContainerStyle={styles.scrollContent}
@@ -135,7 +157,7 @@ export const HomeScreen = () => {
             <TransactionItem key={item.id} {...item} />
           ))}
         </View>
-      </ScrollView>
+      </Animated.ScrollView>
     </SafeAreaView>
   );
 };
